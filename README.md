@@ -6,6 +6,8 @@ Esse repositório faz parte de um vídeo que busca
 demonstrar na prática um benchmark de performance
 e também questões de manutenção de código!
 
+Link do vídeo: https://youtu.be/QhWm5-PMIH8
+
 
 ## Comando usado para o benchmark
 
