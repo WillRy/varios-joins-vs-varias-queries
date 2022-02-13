@@ -8,6 +8,19 @@ e também questões de manutenção de código!
 
 Link do vídeo: https://youtu.be/QhWm5-PMIH8
 
+## Como executar?
+
+- Clone o repositório
+- Configure as credenciais do banco de dados no config.php
+- Executa a aplicação em seu computador diretamente ou via docker
+
+**Executar ambiente docker**
+
+```shell
+sudo chmod 777 -R ./docker
+
+docker-compose up -d
+```
 
 ## Comando usado para o benchmark
 
