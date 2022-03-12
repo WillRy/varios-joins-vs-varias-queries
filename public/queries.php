@@ -11,8 +11,8 @@ function listarEnderecos($idUsuarios = []) {
     //$inQuery = ?,?,?,?
     $stmt = Connect::getInstance()->prepare("
         SELECT 
-            a.id AS endereco_id,
-            a.name AS endereco,
+            a.id AS address_id,
+            a.name AS address,
             a.user_id
         FROM address as a
         where a.user_id in ({$inQuery})
@@ -30,8 +30,8 @@ function listarTelefones($idUsuarios = []) {
     //$inQuery = ?,?,?,?
     $stmt = Connect::getInstance()->prepare("
         SELECT 
-           p.id AS numero_id,
-           p.number AS numero,
+           p.id AS phone_id,
+           p.number AS phone,
            p.user_id
         FROM phone as p
         where p.user_id in ({$inQuery})
@@ -49,10 +49,10 @@ function listarArquivos($idUsuarios = []) {
     //$inQuery = ?,?,?,?
     $stmt = Connect::getInstance()->prepare("
         SELECT 
-           f.id AS arquivo_id,
-           f.name AS arquivo,
-           f.extension AS extensao,
-           f.url AS url,
+           f.id AS file_id,
+           f.name AS file,
+           f.extension,
+           f.url,
            f.user_id
         FROM files as f
         where f.user_id in ({$inQuery})
@@ -86,13 +86,13 @@ function listar() {
 
     /** Normalizar dados duplicados de relacionamentos ( 1 PARA N ) */
     foreach($usuarios as $usuario) {
-        $usuario->telefones = array_values(array_filter($telefonesTodosUsuarios, function ($item) use ($usuario) {
+        $usuario->phones = array_values(array_filter($telefonesTodosUsuarios, function ($item) use ($usuario) {
             return $item->user_id === $usuario->id;
         }));
-        $usuario->enderecos = array_values(array_filter($enderecosTodosUsuarios, function ($item) use ($usuario) {
+        $usuario->addresses = array_values(array_filter($enderecosTodosUsuarios, function ($item) use ($usuario) {
             return $item->user_id === $usuario->id;
         }));
-        $usuario->arquivos = array_values(array_filter($arquivosTodosUsuarios, function ($item) use ($usuario) {
+        $usuario->files = array_values(array_filter($arquivosTodosUsuarios, function ($item) use ($usuario) {
             return $item->user_id === $usuario->id;
         }));
     }

@@ -12,13 +12,13 @@ function listar() {
         SELECT 
             u.id,
             u.first_name,
-            p.id as numero_id,
-            p.number as numero,
-            a.id as endereco_id,
-            a.name as endereco,
-            f.id as arquivo_id,
-            f.name as arquivo,
-            f.extension as extensao,
+            p.id as phone_id,
+            p.number as phone,
+            a.id as address_id,
+            a.name as address,
+            f.id as file_id,
+            f.name as file,
+            f.extension,
             f.url as url
         fROM (
         SELECT 
@@ -38,27 +38,27 @@ function listar() {
         $resultados[$usuario->id]["id"] = $usuario->id;
         $resultados[$usuario->id]["first_name"] = $usuario->first_name;
 
-        if (!empty($usuario->numero_id)) {
-            $resultados[$usuario->id]["telefones"][$usuario->numero_id] = [
-                "numero_id" => $usuario->numero_id,
-                "numero" => $usuario->numero,
+        if (!empty($usuario->phone_id)) {
+            $resultados[$usuario->id]["phones"][$usuario->phone_id] = [
+                "phone_id" => $usuario->phone_id,
+                "phone" => $usuario->phone,
                 "user_id" => $usuario->id
             ];
         }
 
-        if (!empty($usuario->endereco_id)) {
-            $resultados[$usuario->id]["enderecos"][$usuario->endereco_id] = [
-                "endereco_id" => $usuario->endereco_id,
-                "endereco" => $usuario->endereco,
+        if (!empty($usuario->address_id)) {
+            $resultados[$usuario->id]["addresses"][$usuario->address_id] = [
+                "address_id" => $usuario->address_id,
+                "address" => $usuario->address,
                 "user_id" => $usuario->id,
             ];
         }
 
-        if (!empty($usuario->arquivo_id)) {
-            $resultados[$usuario->id]["arquivos"][$usuario->arquivo_id] = [
-                "arquivo_id" => $usuario->arquivo_id,
-                "arquivo" => $usuario->arquivo,
-                "extensao" => $usuario->extensao,
+        if (!empty($usuario->file_id)) {
+            $resultados[$usuario->id]["files"][$usuario->file_id] = [
+                "file_id" => $usuario->file_id,
+                "file" => $usuario->file,
+                "extension" => $usuario->extension,
                 "url" => $usuario->url,
                 "user_id" => $usuario->id,
             ];
